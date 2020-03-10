@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <title>Joke Api</title>
+        
+    <meta charset="utf-8">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+        
+</head>
+
+<body>
+
+        <div class="jumbotron text-center">
+                <h1>it do be jokes sometimes</h1>
+
+            
+    </div>
+
+        <div class="container">
+                <input type="button" onclick="sendRequest();" value="get request">
+                <br>
+                <p id="output"></p>
+            </div>
+        
+
+        <script>
+        function sendRequest() {
+            fetch('https://sv443.net/jokeapi/v2/joke/Any', {
+                    headers: new Headers({
+                        'Accept': 'application/json'
+                    })
+                })
+                .then((response) => {
+                    return response.json();
+                })
+                .then((Celeste) => {
+                    console.log(Celeste);
+                    let p = document.getElementById('output');
+                    p.innerHTML = "setup:" + Celeste.setup + "<br>";
+                    p.innerHTML += "delivery:" + Celeste.delivery + "<br>";
+                    p.innerHTML = "joke:" + Celeste.joke + "<br>";
+                });
+        }
+    </script>
+
+
+</body></html>

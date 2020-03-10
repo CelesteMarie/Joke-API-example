@@ -1,0 +1,56 @@
+<html>
+
+<body>
+    <div>
+        <p id="output"> </p>
+    </div>
+
+    <input type="button" onclick="getARandomJoke()" value=" dad joke ">
+    <input type="text" id="searchTerm" placeholder="search">
+    <input type="button" onclick="searchForAJoke()" value="search">
+                <br>
+    <hr>
+
+                <p id="joke"></p>
+
+
+    <script>
+        function searchForAJoke() {
+            let searchTerm = document.getElementById('searchTerm').value;
+            console.log(searchTerm);
+            let url = 'https://icanhazdadjoke.com/search?term=' + searchTerm;
+            fetch(url, {
+                    headers: new Headers({
+                        'Accept': 'application/json'
+                    })
+                })
+                .then((response) => {
+                    return response.json();
+                })
+                .then((myJson) => {
+                    console.log(myJson);
+                    let jokes = myJson.results;
+                    let p = document.getElementById('joke')
+                    for (var i = 0; i < jokes.length; i++) {
+                        p.innerHTML += jokes[i].joke + "<br>";
+                    }
+                });
+        }
+
+        function getARandomJoke() {
+            fetch('https://icanhazdadjoke.com/', {
+                    headers: new Headers({
+                        'Accept': 'application/json'
+                    })
+                })
+                .then((response) => {
+                    return response.json();
+                })
+                .then((Celeste) => {
+                    console.log(Celeste);
+                    let p = document.getElementById('output');
+                    p.innerHTML = Celeste.joke + "<br>";
+                });
+        }
+    </script>
+</body></html>

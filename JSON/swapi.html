@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <title>Star Wars Api</title>
+        
+    <meta charset="utf-8">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+        
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+
+        <div class="jumbotron text-center">
+                <h1>Star Wars</h1>
+
+            </div>
+
+        <div class="container">
+                <input type="text" id="searchTerm" placeholder="search here..."> <input type="button" onclick="searchForACharacter()" value="search">
+                <br>
+                <p id="output"></p>
+            </div>
+        
+
+        <script>
+        function searchForACharacter() {
+            let searchTerm = document.getElementById('searchTerm').value;
+            console.log(searchTerm);
+            let url = 'https://swapi.co/api/people/?search=' + searchTerm;
+            fetch(url)
+                .then((response) => {
+                    return response.json();
+                })
+                .then((myJson) => {
+                        console.log(myJson);
+                        let results = myJson.results;
+                        let p = document.getElementById('output')
+                        for (var i = 0; i < results.length; i++) {
+                            let person = results[i];
+
+                            p.innerHTML = "Name:" + first.name + "<br>";
+                            p.innerHTML = "Name:" + first.hair_color + "<br>";
+                        }
+                    }
+                });
+        }
+    </script>
+
+
+</body></html>

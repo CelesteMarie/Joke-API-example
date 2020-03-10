@@ -1,0 +1,26 @@
+<html>
+
+<body>
+    <div>
+
+        <p id="output"> </p>
+    </div>
+    <input type="button" onclick="getJSON()" value=" GET JSON ">
+
+
+
+    <script>
+        function getJSON() {
+            fetch('Celeste.json')
+                .then((response) => {
+                    return response.json();
+                })
+                .then((Celeste) => {
+                    console.log(Celeste);
+                    let p = document.getElementById('output');
+                    p.textContent = Celeste.Name;
+                });
+        }
+    </script>
+</body></html>
+
